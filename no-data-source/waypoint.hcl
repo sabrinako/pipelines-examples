@@ -9,6 +9,8 @@ app "no-data-source" {
     registry {
       use "docker" {
         local = true
+        image = "no-data-source"
+        tag   = "latest"
       }
     }
   }

@@ -19,6 +19,8 @@ app "data-source" {
     registry {
       use "docker" {
         local = true
+        image = "data-source"
+        tag   = "latest"
       }
     }
   }
