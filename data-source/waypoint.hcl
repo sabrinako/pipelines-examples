@@ -19,8 +19,8 @@ app "data-source" {
     }
     registry {
       use "docker" {
-        image    = "jgwhite/data-source"
-        tag      = "latest"
+        image = "jgwhitehashicorp/data-source"
+        tag   = "latest"
         username = var.docker_username
         password = var.docker_password
       }
