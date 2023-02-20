@@ -21,8 +21,8 @@ app "data-source" {
       use "docker" {
         image    = "jgwhite/data-source"
         tag      = "latest"
-        username = var.docker.username
-        password = var.docker.password
+        username = var.docker["username"]
+        password = var.docker["password"]
       }
     }
   }
