@@ -19,10 +19,12 @@ app "data-source" {
     }
     registry {
       use "docker" {
-        image    = "jgwhite/data-source"
-        tag      = "latest"
-        username = var.docker["username"]
-        password = var.docker["password"]
+        image = "jgwhite/data-source"
+        tag   = "latest"
+        auth {
+          username = var.docker["username"]
+          password = var.docker["password"]
+        }
       }
     }
   }
