@@ -19,9 +19,10 @@ app "data-source" {
     }
     registry {
       use "docker" {
-        local = true
-        image = "jgwhite/data-source"
-        tag   = "latest"
+        image    = "jgwhite/data-source"
+        tag      = "latest"
+        username = var.docker.username
+        password = var.docker.password
       }
     }
   }
@@ -29,4 +30,11 @@ app "data-source" {
   deploy {
     use "docker" {}
   }
+}
+
+variable "docker" {
+  type = object({
+    username = string
+    password = string
+  })
 }
