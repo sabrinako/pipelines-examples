@@ -10,7 +10,7 @@ app "no-data-source" {
     registry {
       use "docker" {
         local = true
-        image = "jgwhite/no-data-source"
+        image = "jgwhitehashicorp/no-data-source"
         tag   = "latest"
       }
     }
