@@ -20,7 +20,7 @@ app "data-source" {
     registry {
       use "docker" {
         local = true
-        image = "data-source"
+        image = "jgwhite/data-source"
         tag   = "latest"
       }
     }
