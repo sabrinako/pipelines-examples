@@ -19,12 +19,10 @@ app "data-source" {
     }
     registry {
       use "docker" {
-        image = "jgwhite/data-source"
-        tag   = "latest"
-        auth {
-          username = var.docker["username"]
-          password = var.docker["password"]
-        }
+        image    = "jgwhite/data-source"
+        tag      = "latest"
+        username = var.docker_username
+        password = var.docker_password
       }
     }
   }
@@ -34,9 +32,9 @@ app "data-source" {
   }
 }
 
-variable "docker" {
-  type = object({
-    username = string
-    password = string
-  })
+variable "docker_username" {
+  type = string
+}
+variable "docker_password" {
+  type = string
 }
