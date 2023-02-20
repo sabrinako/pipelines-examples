@@ -16,6 +16,11 @@ app "data-source" {
       image = "nginx"
       tag   = "latest"
     }
+    registry {
+      use "docker" {
+        local = true
+      }
+    }
   }
 
   deploy {
