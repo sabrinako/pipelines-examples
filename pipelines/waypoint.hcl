@@ -8,6 +8,13 @@ pipeline "test" {
       args = ["hello"]
     }
   }
+  step "bye" {
+    image_url = "busybox"
+    use "exec" {
+      command = "echo"
+      args = ["bye"]
+    }
+  }
 }
 
 runner {
