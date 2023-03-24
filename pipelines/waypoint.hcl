@@ -51,19 +51,21 @@ pipeline "three-step-nested" {
       args = ["preparing..."]
     }
   }
-  pipeline "nested" {
-    step "hi" {
-      image_url = "busybox"
-      use "exec" {
-        command = "echo"
-        args = ["hi"]
+  step "nested-step" {
+    pipeline "nested-pipeline" {
+      step "hi" {
+        image_url = "busybox"
+        use "exec" {
+          command = "echo"
+          args = ["hi"]
+        }
       }
-    }
-    step "bye" {
-      image_url = "busybox"
-      use "exec" {
-        command = "echo"
-        args = ["bye"]
+      step "bye" {
+        image_url = "busybox"
+        use "exec" {
+          command = "echo"
+          args = ["bye"]
+        }
       }
     }
   }
