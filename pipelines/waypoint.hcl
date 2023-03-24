@@ -35,7 +35,7 @@ pipeline "three-step-nested" {
       args = ["preparing..."]
     }
   }
-  step "two-step" {
+  step "nested-two-step" {
     use "pipeline" {
       project = "pipelines"
       name = "two-step"
