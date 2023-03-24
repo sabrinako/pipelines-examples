@@ -27,6 +27,22 @@ pipeline "two-step" {
   }
 }
 
+pipeline "three-step-referenced" {
+  step "prep" {
+    image_url = "busybox"
+    use "exec" {
+      command = "echo"
+      args = ["preparing..."]
+    }
+  }
+  step "reference-two-step" {
+    use "pipeline" {
+      project = "pipelines"
+      name = "two-step"
+    }
+  }
+}
+
 pipeline "three-step-nested" {
   step "prep" {
     image_url = "busybox"
@@ -35,10 +51,20 @@ pipeline "three-step-nested" {
       args = ["preparing..."]
     }
   }
-  step "nested-two-step" {
-    use "pipeline" {
-      project = "pipelines"
-      name = "two-step"
+  pipeline "nested" {
+    step "hi" {
+      image_url = "busybox"
+      use "exec" {
+        command = "echo"
+        args = ["hi"]
+      }
+    }
+    step "bye" {
+      image_url = "busybox"
+      use "exec" {
+        command = "echo"
+        args = ["bye"]
+      }
     }
   }
 }
