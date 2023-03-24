@@ -32,7 +32,7 @@ pipeline "three-step-referenced" {
     image_url = "busybox"
     use "exec" {
       command = "echo"
-      args = ["preparing..."]
+      args = ["preparing"]
     }
   }
   step "reference-two-step" {
@@ -48,7 +48,7 @@ pipeline "three-step-nested" {
     image_url = "busybox"
     use "exec" {
       command = "echo"
-      args = ["preparing..."]
+      args = ["preparing"]
     }
   }
   step "nested-step" {
