@@ -1,11 +1,21 @@
 project = "pipelines"
 
-pipeline "test" {
-  step "hello" {
+pipeline "one-step" {
+  step "hi" {
     image_url = "busybox"
     use "exec" {
       command = "echo"
-      args = ["hello"]
+      args = ["hi"]
+    }
+  }
+}
+
+pipeline "two-step" {
+  step "hi" {
+    image_url = "busybox"
+    use "exec" {
+      command = "echo"
+      args = ["hi"]
     }
   }
   step "bye" {
@@ -13,6 +23,21 @@ pipeline "test" {
     use "exec" {
       command = "echo"
       args = ["bye"]
+    }
+  }
+}
+
+pipeline "three-step-nested" {
+  step "prep" {
+    image_url = "busybox"
+    use "exec" {
+      command = "echo"
+      args = ["preparing..."]
+    }
+  }
+  step "two-step" {
+    use "pipeline" {
+      name = "two-step"
     }
   }
 }
@@ -27,7 +52,7 @@ runner {
   }
 }
 
-app "data-source" {
+app "web" {
   build {
     use "docker" {}
   }
