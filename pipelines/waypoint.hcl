@@ -37,6 +37,7 @@ pipeline "three-step-nested" {
   }
   step "two-step" {
     use "pipeline" {
+      project = "pipelines"
       name = "two-step"
     }
   }
